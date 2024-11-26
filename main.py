@@ -21,6 +21,7 @@ def connect_to_simulator(offline: bool):
     while not is_connected and not offline:
         try:
             sm = CustomSimconnect()
+            print(f"Connected to simulator")
             is_connected = True
         except Exception:
             print(f"Connection to simulator not possible. Retry in {waiting_time}s.") 
@@ -68,6 +69,7 @@ def run_aircraft_configuration(global_storage: GlobalStorage):
     vr = global_storage.mobiflight_variable_requests
     sq = global_storage.system_requests
     current_aircraft = "None"
+    aircraft = ""
     base_matching = global_storage.base_matching
     # Main program loop which checks for aircraft change
     # and reads the simvars for loaded configuration
