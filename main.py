@@ -14,14 +14,17 @@ from midiconnection import MidiConnection
 from aircraftstaterequest import CustomSimconnect, SystemStateRequest
 
 
+
 def connect_to_simulator(offline: bool):
+    start = time.time()
     sm = None
     is_connected = False
     waiting_time = 10
     while not is_connected and not offline:
         try:
             sm = CustomSimconnect()
-            print(f"Connected to simulator")
+            end = time.time()
+            print(f"Connected to simulator after {int(end-start)}s")
             is_connected = True
         except Exception:
             print(f"Connection to simulator not possible. Retry in {waiting_time}s.") 
